@@ -14,11 +14,18 @@ import {
   MatSidenavModule
 } from '@angular/material';
 
+import { AppRoutingModule } from './/app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { QrCodeComponent } from './qr-code/qr-code.component';
+
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    QrCodeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,8 @@ import {
     MatToolbarModule,
     MatInputModule,
     MatSidenavModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,19 +2,4 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
     <span class="title-center">{{ title }}</span>
   </mat-toolbar>
-<div align="center" class="">
-    <br>
-<form>
-
-    <mat-form-field class="full-width">
-      <input matInput [(ngModel)]="user.email"  type="email" placeholder="Login" name="email"  >
-    </mat-form-field>
-  <br>
-    <mat-form-field class="full-width">
-      <input matInput [(ngModel)]="user.password" type="password" placeholder="password" name="email">
-    </mat-form-field>
-  </form>
-
-  <button mat-raised-button color="primary">Click me!</button>
- 
-</div>
+  <router-outlet></router-outlet>

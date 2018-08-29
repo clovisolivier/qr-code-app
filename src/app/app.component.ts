@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
+
   title = 'QR Code';
-  user = {
-    email : "",
-    password : ""
-  }
+  
+
+  
+
 }
