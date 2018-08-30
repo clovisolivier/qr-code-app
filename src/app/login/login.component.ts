@@ -8,7 +8,11 @@ import {User} from '../user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user = new User;
+  user = {
+    email: '';
+    password: '';
+  }
+
   token = '';
   constructor(private authService: AuthService) { }
 
@@ -16,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  login(user: User): void {
-    this.token = this.authService.login(user);
+  login(email:string, password:string): void {
+    this.token = this.authService.login(email, password);
   } 
 }

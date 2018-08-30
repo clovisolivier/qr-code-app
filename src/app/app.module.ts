@@ -20,7 +20,7 @@ import { QrCodeComponent } from './qr-code/qr-code.component';
 
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
-
+import { MomentModule } from 'ngx-moment';
 
 
 @NgModule({
@@ -40,7 +40,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     FormsModule,
     AppRoutingModule,
     NgxQRCodeModule,
-
+    MomentModule
     
   ],
   providers: [],
