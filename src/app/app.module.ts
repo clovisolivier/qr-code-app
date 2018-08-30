@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { QrCodeComponent } from './qr-code/qr-code.component';
 
 
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { QrCodeComponent } from './qr-code/qr-code.component';
     MatSidenavModule,
     FormsModule,
     AppRoutingModule,
+    NgxQRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

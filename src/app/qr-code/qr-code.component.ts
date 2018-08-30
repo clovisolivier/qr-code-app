@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-qr-code',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./qr-code.component.css']
 })
 export class QrCodeComponent implements OnInit {
+
+ 
+  value = 'Sivolvitch';
 
   constructor( ) { }
 
