@@ -9,8 +9,8 @@ import {User} from '../user';
 })
 export class LoginComponent implements OnInit {
   user = {
-    email: '';
-    password: '';
+    email: '',
+    password: ''
   }
 
   token = '';

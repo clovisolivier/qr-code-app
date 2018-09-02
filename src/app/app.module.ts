@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -21,13 +21,15 @@ import { QrCodeComponent } from './qr-code/qr-code.component';
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { MomentModule } from 'ngx-moment';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    QrCodeComponent
+    QrCodeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -38,12 +40,14 @@ import { MomentModule } from 'ngx-moment';
     MatInputModule,
     MatSidenavModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     NgxQRCodeModule,
     MomentModule
     
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,16 +1,19 @@
 <div align="center" class="">
-    <br>
-<form>
+  <br>
+  <form>
 
     <mat-form-field class="full-width">
-      <input matInput [(ngModel)]="user.email"  type="email" placeholder="Login" name="email"  >
+      <input matInput [(ngModel)]="user.email" type="email" placeholder="Login"
+        name="email">
     </mat-form-field>
-  <br>
+    <br>
     <mat-form-field class="full-width">
-      <input matInput [(ngModel)]="user.password" type="password" placeholder="password" name="email">
+      <input matInput [(ngModel)]="user.password" type="password"
+        placeholder="password" name="password">
     </mat-form-field>
   </form>
 
-  <button mat-raised-button color="primary" (click)="login(user.email, user.password)">Click me!</button>
- {{token}}
+  <button mat-raised-button color="primary" (click)="login(user.email,
+    user.password)">Click me!</button>
+  {{token}}
 </div>
