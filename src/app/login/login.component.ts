@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import {User} from '../user';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -10,13 +9,7 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user = {
-    email: '',
-    password: ''
-  }
-
-  token = '';
-
+  
   email = new FormControl('', [
     Validators.required,
     Validators.email
@@ -31,8 +24,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-
   login(email:string, password:string): void {
-    this.token = this.authService.login(email, password);
+    this.authService.login(email, password);
   } 
+
 }

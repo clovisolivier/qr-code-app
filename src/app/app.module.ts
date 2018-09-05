@@ -19,6 +19,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { QrCodeComponent } from './qr-code/qr-code.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { MomentModule } from 'ngx-moment';
@@ -45,7 +46,8 @@ import { RegisterComponent } from './register/register.component';
     NgxQRCodeModule,
     MomentModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [
   ],

@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -8,12 +8,6 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  user = {
-    fullName: '',
-    email: '',
-    password: ''
-  }
 
   name = new FormControl('', [
     Validators.required,
@@ -31,6 +25,7 @@ export class RegisterComponent implements OnInit {
   confirmPassword = new FormControl('', [
     Validators.required,
   ]);
+
   constructor() { }
 
   ngOnInit() {

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'app-qr-code',
@@ -14,11 +14,11 @@ export class QrCodeComponent implements OnInit {
   value = 'Sivolvitch';
 
   constructor( 
-    private authService: AuthService, 
+    private sessionService: SessionService, 
     private router: Router) { 
 
     //Check if user is logged in  
-    if(authService.isLoggedOut()){
+    if(sessionService.isLoggedOut()){
       this.router.navigate(['login']);
     }
   }

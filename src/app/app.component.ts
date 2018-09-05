@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
-import { AuthService } from './auth.service';
+import { SessionService } from './session.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,11 +15,11 @@ export class AppComponent {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private authService: AuthService,
+    private sessionService: SessionService,
     private router: Router,
   ) {
     //If user is logged, auto redirection to qrcode
-    if(authService.isLoggedIn()){
+    if(sessionService.isLoggedIn()){
       this.router.navigate(['qrcode']);
     }
 

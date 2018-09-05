@@ -1,60 +1,42 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import * as moment from "moment";
 import { Observable, of } from 'rxjs';
 
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { User } from './user';
+import { Token } from './models';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  /** 
-    httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
-      })
-    };
-    */
-  private authUrl = 'api/auth';
+
+  private authUrl = 'http://toto.com/api/auth';
 
   constructor(
+    private http: HttpClient,
   ) { }
 
-  login(email: string, password: string): string {
-    return 'msE7ayYMbFquqlRZpKZDTRBgBfMUCZ6R7TUH';
+  login(email: string, password: string): Observable<Token> {
+    const url = `${this.authUrl}`;
+    console.log("login email",email, "password", password);
+    return this.http.get<Token>(url).pipe(
+      tap(_ => this.log(`fetched token`)),
+      catchError(this.handleError<Token>(`Log in as email=${email}`))
+    );
   };
 
 
-  private setSession(authResult) {
-    const expiresAt = moment().add(authResult.expiresIn, 'second');
-
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    console.log(message);
   }
-
-  logout() {
-    localStorage.removeItem("id_token");
-    localStorage.removeItem("expires_at");
-  }
-
-  public isLoggedIn() {
-    return moment().isBefore(this.getExpiration());
-  }
-
-  isLoggedOut() {
-    return !this.isLoggedIn();
-  }
-
-  getExpiration() {
-    const expiration = localStorage.getItem("expires_at");
-    const expiresAt = JSON.parse(expiration);
-    return moment(expiresAt);
-  }
-
   /**
 * Handle Http operation that failed.
 * Let the app continue.
@@ -66,7 +48,10 @@ export class AuthService {
 
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-
+ 
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+ 
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
