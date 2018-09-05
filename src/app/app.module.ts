@@ -11,9 +11,10 @@ import {
   MatCheckboxModule, 
   MatToolbarModule,
   MatInputModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatMenuModule,
+  MatIconModule
 } from '@angular/material';
-
 import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { QrCodeComponent } from './qr-code/qr-code.component';
@@ -22,7 +23,6 @@ import { QrCodeComponent } from './qr-code/qr-code.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { MomentModule } from 'ngx-moment';
 import { RegisterComponent } from './register/register.component';
-
 
 @NgModule({
   declarations: [
@@ -43,8 +43,9 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule,
     AppRoutingModule,
     NgxQRCodeModule,
-    MomentModule
-    
+    MomentModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [
   ],
