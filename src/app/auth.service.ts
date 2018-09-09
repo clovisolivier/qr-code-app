@@ -17,7 +17,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private authUrl = 'http://toto.com/api/auth';
+  private authUrl = '/auth/sign_in';
 
   constructor(
     private http: HttpClient,
