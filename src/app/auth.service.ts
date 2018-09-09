@@ -5,8 +5,7 @@ import { Observable, of } from 'rxjs';
 
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Token } from './models';
-
+import { Token, User } from './models';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,7 +16,8 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private authUrl = '/auth/sign_in';
+  private authUrl = 'http://localhost:3000/auth/sign_in';
+  private user: User;
 
   constructor(
     private http: HttpClient,
@@ -25,14 +25,21 @@ export class AuthService {
 
   login(email: string, password: string): Observable<Token> {
     const url = `${this.authUrl}`;
-    console.log("login email",email, "password", password);
-    return this.http.get<Token>(url).pipe(
+    this.user= {email:email, password :password};
+    return this.http.post<Token>(url, this.user, httpOptions ).pipe(
       tap(_ => this.log(`fetched token`)),
       catchError(this.handleError<Token>(`Log in as email=${email}`))
     );
+    
   };
-
-
+/*
+  addHero (hero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
+      tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
+      catchError(this.handleError<Hero>('addHero'))
+    );
+  };
+*/
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
     console.log(message);

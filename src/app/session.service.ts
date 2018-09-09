@@ -9,20 +9,25 @@ export class SessionService {
 
   constructor() { }
 
-  private setSession(authResult) {
-    const expiresAt = moment().add(authResult.expiresIn, 'second');
+  public setSession(authResult) {
+    //const expiresAt = moment().add(authResult.expiresIn, 'second');
 
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+    localStorage.setItem('token', authResult.token);
+    //localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
   }
 
   logout() {
-    localStorage.removeItem("id_token");
-    localStorage.removeItem("expires_at");
+    localStorage.removeItem("token");
+    //localStorage.removeItem("expires_at");
   }
 
   public isLoggedIn() {
-    return moment().isBefore(this.getExpiration());
+    //return moment().isBefore(this.getExpiration());
+    return (this.getSession()!=null);
+  }
+
+  getSession(){
+    return localStorage.getItem('token');
   }
 
   isLoggedOut() {
