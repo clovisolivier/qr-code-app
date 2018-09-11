@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from '../auth.service';
 import { SessionService } from '../session.service';
 import { FormControl, Validators } from '@angular/forms';
-import { Token } from '../models';
+
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -38,12 +39,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         token => {
           this.sessionService.setSession(token);
-          this.token = this.sessionService.getSession();
-          console.log(this.token);
-          const helper = new JwtHelperService();
-
-          const decodedToken = helper.decodeToken(this.token);
-          console.log(decodedToken);
+          this.router.navigate(['qrcode']);
         },
         error => {
           this.errors = error;
