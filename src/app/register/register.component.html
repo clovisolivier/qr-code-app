@@ -41,5 +41,12 @@
     [disabled]="!name.valid || !email.valid || !password.valid ||
     !confirmPassword.valid"color="primary" (click)="register(name.value,
     email.value, password.value)">Create account!</button>
+    <p>
+    
+        <ngb-alert *ngIf="successMessage" type="success" [dismissible]="false" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+        
+        <ngb-alert *ngIf="failMessage" type="danger" [dismissible]="false"  (close)="failMessage = null">{{ failMessage }}</ngb-alert>
+         
+      </p>
 
 </form>

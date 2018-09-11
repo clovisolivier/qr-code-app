@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Token, User } from './models';
+import { Token, User, UserRegistered } from './models';
 import { environment } from '../environments/environment';
 
 const httpOptions = {
@@ -20,7 +20,7 @@ export class AuthService {
   private authUrlLogin = environment.apiUrl + '/auth/sign_in';
   private authUrlRegister  = environment.apiUrl + '/auth/register';
   private user: User;
-  private userRegister={};
+  private userRegister: UserRegistered;
   constructor(
     private http: HttpClient,
   ) { }
@@ -35,12 +35,12 @@ export class AuthService {
     
   };
   
-  register(fullName: string, email: string, password: string): Observable<Token> {
+  register(fullName: string, email: string, password: string): Observable<User> {
     const url = `${this.authUrlRegister}`;
-    this.userRegister= {fullName: fullName, email:email, password :password};
-    return this.http.post<Token>(url, this.userRegister, httpOptions ).pipe(
-      tap(_ => this.log(`User Registered`)),
-      catchError(this.handleError<Token>(`Register email=${email}`))
+    this.userRegister = {fullName: fullName, email:email, password :password};
+    return this.http.post<UserRegistered>(url, this.userRegister, httpOptions ).pipe(
+      tap((user: UserRegistered) => this.log(`User Registered`)),
+      //catchError(this.handleError<UserRegistered>(`Register email=${email}`))
     );
     
   };

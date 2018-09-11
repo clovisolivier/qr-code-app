@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
       debounceTime(3000)
     ).subscribe(() => {
       this.successMessage = null
-       // this.router.navigate(['qrcode'])
+      // this.router.navigate(['qrcode'])
     }
     );
 
@@ -60,16 +60,16 @@ export class RegisterComponent implements OnInit {
     console.log(fullName, email, password);
     this.authService.register(fullName, email, password)
       .subscribe(
-        token => {
-        //  this.sessionService.setSession(token);
-          this._success.next(`Connection success`);
+        user => {
+          //  this.sessionService.setSession(token);
+          this._success.next(`User registered !`);
         },
         error => {
           this.errors = error;
-          this._fail.next(`Connection failed`);
+          this._fail.next(`Registration failed !`);
         }
       );
   }
-  }
-
 }
+
+
