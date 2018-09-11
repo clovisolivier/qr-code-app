@@ -27,7 +27,11 @@ export class AppComponent {
 
   title = 'QR Code';
   
-
+  logout(){
+    console.log('Logout');
+    this.sessionService.logout();
+    this.router.navigate(['login']);
+  }
   
 
 }

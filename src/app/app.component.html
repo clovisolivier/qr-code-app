@@ -12,12 +12,13 @@
                   <a mat-menu-item routerLink="/login">Login</a>
                   <a mat-menu-item routerLink="/register">Register</a>
                   <a mat-menu-item routerLink="/qrcode">Qr Code</a>
-                  
+                  <a mat-menu-item (click)="logout()">Logout</a>
                 </mat-menu>
           </span>
         </span>
   
   <span class="title-center">{{ title }}</span>
+  
 </mat-toolbar>
 
 <router-outlet></router-outlet>
