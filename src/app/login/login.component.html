@@ -23,12 +23,13 @@
   <button mat-raised-button
     [disabled]="!email.valid || !password.valid" color="primary"
     (click)="login(email.value, password.value)">Log</button>
-    <!--
-      <p>
-        <ngb-alert [type]="warning" [dismissible]="false">
-          <strong>Warning!</strong> Better check yourself, you're not looking too good.
-        </ngb-alert>
-      </p>
-    -->
+
+  <p>
+    
+    <ngb-alert *ngIf="successMessage" type="success" [dismissible]="false" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+    
+    <ngb-alert *ngIf="failMessage" type="danger" [dismissible]="false"  (close)="failMessage = null">{{ failMessage }}</ngb-alert>
+     
+  </p>
 
 </form>

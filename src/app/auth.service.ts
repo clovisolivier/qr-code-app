@@ -29,7 +29,7 @@ export class AuthService {
     this.user= {email:email, password :password};
     return this.http.post<Token>(url, this.user, httpOptions ).pipe(
       tap(_ => this.log(`fetched token`)),
-      catchError(this.handleError<Token>(`Log in as email=${email}`))
+      //catchError(this.handleError<Token>(`Log in as email=${email}`))
     );
     
   };
