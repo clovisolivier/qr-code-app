@@ -40,4 +40,6 @@ export class QrCodeComponent implements OnInit {
     this.value = btoa(JSON.stringify(this.json));
   }
 
+  
+
 }
