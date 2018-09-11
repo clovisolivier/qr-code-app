@@ -17,19 +17,30 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private authUrl = environment.apiUrl + '/auth/sign_in';
+  private authUrlLogin = environment.apiUrl + '/auth/sign_in';
+  private authUrlRegister  = environment.apiUrl + '/auth/register';
   private user: User;
-
+  private userRegister={};
   constructor(
     private http: HttpClient,
   ) { }
 
   login(email: string, password: string): Observable<Token> {
-    const url = `${this.authUrl}`;
+    const url = `${this.authUrlLogin}`;
     this.user= {email:email, password :password};
     return this.http.post<Token>(url, this.user, httpOptions ).pipe(
       tap(_ => this.log(`fetched token`)),
       //catchError(this.handleError<Token>(`Log in as email=${email}`))
+    );
+    
+  };
+  
+  register(fullName: string, email: string, password: string): Observable<Token> {
+    const url = `${this.authUrlRegister}`;
+    this.userRegister= {fullName: fullName, email:email, password :password};
+    return this.http.post<Token>(url, this.userRegister, httpOptions ).pipe(
+      tap(_ => this.log(`User Registered`)),
+      catchError(this.handleError<Token>(`Register email=${email}`))
     );
     
   };

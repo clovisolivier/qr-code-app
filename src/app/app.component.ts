@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
 
 import { SessionService } from './session.service';
 import { Router } from '@angular/router';
@@ -13,8 +11,6 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
   constructor(
-    private route: ActivatedRoute,
-    private location: Location,
     private sessionService: SessionService,
     private router: Router,
   ) {
@@ -22,7 +18,6 @@ export class AppComponent {
     if(sessionService.isLoggedIn()){
       this.router.navigate(['qrcode']);
     }
-
   }
 
   title = 'QR Code';
