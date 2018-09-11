@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Token, User } from './models';
+import { environment } from '../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,7 +17,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private authUrl = 'http://localhost:3000/auth/sign_in';
+  private authUrl = environment.apiUrl + '/auth/sign_in';
   private user: User;
 
   constructor(
